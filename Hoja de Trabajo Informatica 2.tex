@@ -1,0 +1,115 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+
+
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} 
+
+\author{Andrea Amado 20191102, Byron Terre 20191402  y Fernando de Tezanos 20191139} 
+
+\title{Hoja de trabajo No.2} 
+
+\date{6 de agosto del 2019} 
+
+\usepackage{natbib}
+
+\usepackage{graphicx}
+
+% Margins 
+
+\topmargin= -0.45in 
+
+\evensidemargin=0in
+
+\oddsidemargin=0in
+
+\textwidth=6.5in
+
+\textheight=9.0in
+
+\headsep=0.25in
+
+\begin{document}
+
+
+
+\maketitle
+
+
+
+\section{Ejercicio 1}
+
+\begin{enumerate}
+
+    \item Demostrar usando inducción  $\forall\ n.\ n^3\geq n^2$ \par
+
+    Caso base: $n=0$ \par
+
+    $ 0^3\geq 0^2$ \par
+
+    $0\geq 0$ \par
+
+    Hipotesis Inductiva: $ n^3\geq n^2\ $ \par
+
+    Demostración: \par
+
+    $(n+1)(n+1)^2 \geq (n+1)^2$ \par
+
+    $(n+1)\geq \frac{(n+1)^2}{(n+1)^2}$ \par
+
+    $n+1\geq 1$ \par
+
+    $n\geq 1-1$ \par
+
+    $n\geq 0$
+
+\end{enumerate}
+
+
+
+\section{Ejercicio 2}
+
+\begin{enumerate}
+
+    \item Demostrar utilizando inducci\'on la desigualdad de Bernoulli lo siguiente $\forall\ n.\ (1+x)^n\geq nx $\\donde $n\in \mathbb{N}$, $x\in \mathbb{Q}$ y $x\geq -1$ \par
+
+    Caso base: $n=0$ \par
+
+    $ (1+x)^0\geq (0)x$ \par
+
+    $1\geq 0$\par
+
+    Hipotesis Inductiva: $ (1+x)^n\geq nx\ $ \par
+
+    Demostración x positiva: \par
+
+    $(1+x)^{(n+1)} \geq x(n+1)$ \par
+
+    $(1+x)(1+x)^n\geq x(n+1) $ \par
+
+    $(1+x)^n+x(1+x)^n\geq (nx+x)$ \par
+
+    $x(n+1)^n\geq x$ \par
+
+    $(n+1)^n \geq 1$\par
+
+    $nx \geq 1$\par
+
+    Demostración para cuando x es negativo \par
+
+    $(1+x)(1+x)^{(n+1)}\leq x(n+1)$\par 
+
+    $(1+x)nx\leq x(n+1)$\par
+
+    $(1+x)n\leq n+1$\par
+
+    $n+nx\leq n+1$\par
+
+    $nx\leq 1$ \par
+
+    Si -1 \leq x\leq 0$ entonces $nx\leq 1
+
+\end{enumerate}
+
+\end{document}
