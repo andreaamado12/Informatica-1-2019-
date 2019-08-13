@@ -1,0 +1,197 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} 
+\author{Byron Terre 2019-1403, Andrea Amado 2019-1138, Fernando de Tezanos 2019-1102} 
+\title{Hoja de trabajo No.3} 
+\date{13 de agosto de 2019} 
+\usepackage{natbib}
+\usepackage{graphicx}
+% Margins 
+\topmargin= -0.45in 
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+\begin{document}
+\linespread{1.1}
+
+\maketitle
+
+\section{Ejercicio 1}\par
+\begin{center}
+
+$[s(s(s(s(0))))] \oplus [s(s(s(0)))]$ 
+\end{center}
+\begin{center}
+$[s(s(s(s(s(0)))))] \oplus [s(s(0))] $
+\end{center}
+\begin{center}
+$[s(s(s(s(s(s(0))))))] \oplus [s(0)]$ 
+\end{center}
+\begin{center}
+$[s(s(s(s(s(s(s(0)))))))] \oplus 0 $
+\end{center}
+\begin{center}
+$[s(s(s(s(s(s(s(0\oplus 0)))))))]$
+\end{center}
+\begin{center}
+$[s(s(s(s(s(s(s(0)))))))]$
+\end{center}
+\section{Ejercicio 2}
+\[
+n\otimes m := \left\{
+\begin{array}{l l}
+0 & \mbox{si } n=o \\
+0 & \mbox{si } m=o \\
+m & \mbox{si } n=1 \\
+n & \mbox{si } m=1 \\ 
+s(i)\otimes s(j) & \mbox{si } s(i) \oplus (s(i)\otimes j)\\
+\end{array}
+\right.
+ \]
+ \section{Ejercicio 3}
+\begin{itemize}
+    \item {$s(s(s(0))) \otimes 0$} 
+\begin{flushleft}
+      0  
+\end{flushleft}
+   \item{$s(s(s(0))) \otimes s(0)$}
+\begin{flushleft}
+    $s(s(s(0))) \otimes 1$
+\end{flushleft}
+\begin{flushleft}
+    s(s(s(0)))
+\end{flushleft}
+
+    \item {$ s(s(s(0))) \otimes  s(s(0))$}
+\begin{flushleft}
+    $s(s(s(0))) \oplus [s(s(s(0))) \otimes s(0) ]$
+\end{flushleft}
+\begin{flushleft}
+    $s(s(s(0))) \oplus (s(s(s(0))))$
+\end{flushleft}
+\begin{flushleft}
+    $s(s(s(s(0)))) \oplus (s(s(0)))$
+\end{flushleft}
+\begin{flushleft}
+    $s(s(s(s(s(0))))) \oplus (s(0))$
+\end{flushleft}
+\begin{flushleft}
+   $s(s(s(s(s(s(0)))))) \oplus 0$
+\end{flushleft}
+\begin{flushleft}
+    $s(s(s(s(s(s(0+0))))))$
+\end{flushleft}
+\begin{flushleft}
+    $s(s(s(s(s(s(0))))))$
+\end{flushleft}
+\end{itemize}
+\section{Ejercicio 4}
+\begin{itemize}
+
+        \item{$a\oplus s(s(0))=s(s(a))$} 
+        \begin{flushleft}
+        Caso base a=0 \\
+        \end{flushleft}
+        \begin{flushleft}
+        $0 \oplus s(s(0)) = s(s(0))$ 
+        \end{flushleft}
+        \begin{flushleft}
+        $s(s(0 \oplus 0)) =s(s(0))$ 
+        \end{flushleft}
+        \begin{flushleft}
+        $s(s(0)) = s(s(0))$ 
+        \end{flushleft}
+        \begin{flushleft}
+        Caso inductivo a= s(i) 
+        \end{flushleft}
+        \begin{flushleft}
+        $s(i) \oplus s(s(0)) = s(s(s(i))) $ 
+        \end{flushleft}
+        \begin{flushleft}
+        $s(s(i)) \oplus s(0) = s(s(s(i)))$ 
+        \end{flushleft}
+        \begin{flushleft}
+        $s(s(s(i\oplus 0))) = s(s(s(i)))$ 
+        \end{flushleft}
+        \begin{flushleft}
+        $s(s(s(i))) = s(s(s(i)))$
+        \end{flushleft}
+        \item{$a \otimes b = b \otimes a$}
+        \begin{flushleft}
+        Caso base a = 0 
+        \end{flushleft}
+        \begin{flushleft}
+        $0 \otimes b = b \otimes 0$ 
+        \end{flushleft}
+        \begin{flushleft}
+        $0 = 0$ 
+        \end{flushleft}
+        \begin{flushleft}
+        Caso Inductivo a = s(i)
+        \end{flushleft}
+        \begin{flushleft}
+            $s(i) \otimes b = b \otimes s(i)$ 
+        \end{flushleft}
+        \begin{flushleft}
+            $s(i) \oplus (s(i)\otimes b) = (b \otimes s(i)) \oplus s(i)$
+        \end{flushleft}
+        \begin{flushleft}
+            $s(i) \oplus (s(i)\otimes b) = s(i) \oplus (s(i) \otimes b)$
+        \end{flushleft}
+
+        \item{$a \otimes (b \otimes c)=(a\otimes b)\otimes c$}
+        \begin{flushleft}
+            Caso Base c= 0
+        \end{flushleft}
+        \begin{flushleft}
+            $a \otimes (b\otimes 0) = (a \otimes b) \otimes 0$
+        \end{flushleft}
+        \begin{flushleft}
+            $a \otimes 0  = (ab) \otimes 0$
+        \end{flushleft}
+        \begin{flushleft}
+            $0=0$
+        \end{flushleft}
+        \begin{flushleft}
+            Caso Inductivo a= s(i)
+        \end{flushleft}
+        \begin{flushleft}
+            $s(i) \otimes (b \otimes c)=(s(i)\otimes b)\otimes c$
+        \end{flushleft}
+        \begin{flushleft}
+            $s(i) \oplus (s(i) \otimes (b\otimes c)) = (s(i) \oplus (s(i) \otimes b)) \otimes c$
+        \end{flushleft}
+        \begin{flushleft}
+           $s(i) \oplus (s(i) \otimes (b\otimes c)) = s(i) \oplus (s(i) \otimes (b\otimes c))$ 
+        \end{flushleft}
+        \item{$(a\oplus b)\otimes c = (a\otimes c) \oplus (b \otimes c)$}
+        \begin{flushleft}
+            Caso base c = 0
+        \end{flushleft}
+        \begin{flushleft}
+            $(a\oplus b)\otimes 0 = (a\otimes 0) \oplus (b \otimes 0)$
+        \end{flushleft}
+        \begin{flushleft}
+            $(a\oplus b)\otimes 0 = 0 \oplus 0$
+        \end{flushleft}
+        \begin{flushleft}
+            $0 =0$
+        \end{flushleft}
+        \begin{flushleft}
+            Caso Inductivo c= s(i) 
+        \end{flushleft}
+        \begin{flushleft}
+            $(a\oplus b)\otimes s(i) = (a\otimes s(i)) \oplus (b \otimes s(i))$
+        \end{flushleft}
+        \begin{flushleft}
+            $(a\otimes s(i)) \oplus (b \otimes s(i)) =  (a\otimes s(i)) \oplus (b \otimes s(i)) $
+        \end{flushleft}
+        \begin{flushleft}
+            $(s(i) \oplus (s(i)\otimes a)) \oplus (s(i) \oplus (s(i)\otimes b)) = (s(i) \oplus (s(i)\otimes a)) \oplus (s(i) \oplus (s(i)\otimes b))$
+        \end{flushleft}
+\end{itemize}
+\end{document}
+
