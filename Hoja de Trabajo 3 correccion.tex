@@ -1,0 +1,402 @@
+\documentclass{article}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+\lstloadlanguages{c} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=[sharp]c, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\perlscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.cs}
+\end{itemize}
+}
+
+\begin{document}
+
+
+
+\begin{center}
+        \horrule{0.5pt}
+        \huge{Hoja de trabajo \#3} \\
+        \large{Andrea Amado}\\
+        \large{Byron Terre}\\
+        \large{Fernando de Tezanos}\\
+        \large{13 de Agosto, 2019} \\
+        \horrule{1pt}
+\end{center}
+\section*{Ejercicio \#1}
+Utilizando la definicion de suma ($\oplus$) para los numeros naturales unarios, llevar
+a cabo la suma entre tres [$s(s(s(0)))$] y cuatro [$s(s(s(s(0))))$].\\ 
+\[
+        s(s(s(0)))\oplus s(s(s(s(0))))
+\]\\
+        a=s(x)\\
+        x=s(s(0))\\
+        b=s(s(s(s(0))))
+ \[
+        s[s(s(0))\oplus b]
+\] \\
+        a=s(x)\\
+        x=s(0)\\
+        b=s(s(s(s(0))))
+\[
+        s[s(s(0)\oplus b)]
+\]\\
+        a=s(x)\\
+        x=0\\
+        b=s(s(s(s(0))))
+\[
+        s[s(s(0\oplus b))]
+\]\\
+0+b=b
+\[
+        s[(s(s(b))]
+\]
+\[
+        [s(s(s(s(s(s(s(0)))))))]
+\]
+\[
+        =7
+\]
+\section*{Ejercicio \#2}
+Definir inductivamente una funci\'on para multiplicar ($\otimes$) numeros naturales unarios.
+\[
+        a\otimes b := \left\{
+        \begin{array}{l l}
+            0 & \mbox{si } a=o \\
+            0 & \mbox{si } b=o \\
+            a & \mbox{si } b=1 \\
+            b & \mbox{si } a=1 \\
+            b\oplus(x\otimes b) & \mbox{si } a=\sigma(x) \\
+        \end{array}
+        \right.
+    \]
+
+\section*{Ejercicio \#3}
+Verifique que su definici\'on de multiplicaci\'on es correcta multiplicando los siguientes valores:
+\begin{itemize}
+        \item{$\sigma(\sigma(\sigma(0)))\otimes 0$}\\
+\[
+       \sigma(\sigma(\sigma(0)))\otimes 0\\
+\] 
+        a=$\sigma(\sigma(\sigma(0)))$\\
+\[
+       a\otimes 0=0\\
+\] 
+        
+        \item{$\sigma(\sigma(\sigma(0)))\otimes \sigma(0)$}
+\[
+       \sigma(\sigma(\sigma(0)))\otimes \sigma(0)\\
+\] 
+        a=$\sigma(x)$\\
+        x=$\sigma(\sigma(0))$\\
+        b=$\sigma(0)$
+\[
+       b\oplus(x\otimes b)\\
+\]
+\[
+       =b\oplus(\sigma(\sigma(0))\otimes b)\\
+\]
+        a=$\sigma(x)$\\
+        x=$\sigma(0)$
+\[
+       =b\oplus b\oplus(\sigma(0)\otimes b)\\
+\]
+        a=$\sigma(x)$\\
+        x=0
+\[
+       =b\oplus b\oplus b\oplus(0\otimes b)\\
+\]
+ 0 $\otimes$ b=0
+\[
+       =b\oplus b\oplus b\oplus(0)\\
+\]
+\[
+       =b\oplus b\oplus b\\
+\]
+\[
+       =\sigma(0)\oplus \sigma(0)\oplus \sigma(0)\\
+\]
+\[
+       =\sigma( \sigma( \sigma(0)))\\
+\]
+\[
+       =3\\
+\]
+        \item{$\sigma(\sigma(\sigma(0)))\otimes \sigma(\sigma(0))$}
+        \[
+       \sigma(\sigma(\sigma(0)))\otimes \sigma(\sigma(0))\\
+\] 
+        a=$\sigma(x)$\\
+        x=$\sigma(\sigma(0))$\\
+        b=$\sigma\sigma((0))$
+\[
+       b\oplus(x\otimes b)\\
+\]
+\[
+       =b\oplus(\sigma(\sigma(0))\otimes b)\\
+\]
+        a=$\sigma(x)$\\
+        x=$\sigma(0)$
+\[
+       =b\oplus b\oplus(\sigma(0)\otimes b)\\
+\]
+        a=$\sigma(x)$\\
+        x=0
+\[
+       =b\oplus b\oplus b\oplus(0\otimes b)\\
+\]
+ 0 $\otimes$ b=0
+\[
+       =b\oplus b\oplus b\oplus(0)\\
+\]
+\[
+       =b\oplus b\oplus b\\
+\]
+\[
+       =\sigma(\sigma(0))\oplus \sigma(\sigma(0))\oplus \sigma(\sigma(0))\\
+\]
+\[
+       =\sigma( \sigma( \sigma(\sigma( \sigma( \sigma(0))))))\\
+\]
+\[
+       =6\\
+\]
+\end{itemize}
+\section*{Ejercicio \#4}
+Demostrar utilizando inducci\'on:
+\begin{itemize}
+        \item{$a\oplus \sigma(\sigma(0))=\sigma(\sigma(a))$}\\
+        \large{Caso Base:}
+        a=0
+\[
+       0+\sigma(\sigma(0))=\sigma(\sigma(0))\\
+\]
+\[
+       \sigma(\sigma(0))=\sigma(\sigma(0))\\
+\]
+\large{Caso Inductivo:}
+a=$\sigma(x)$\\
+Hipótesis Inductiva: 
+x+$\sigma(\sigma(0))=\sigma(\sigma(x))$
+\[
+       \sigma(x)\oplus\sigma(\sigma(0))=\sigma(\sigma(\sigma(x)))\\
+\]
+\[
+       \sigma(x\oplus\sigma(\sigma(0)))=\sigma(\sigma(\sigma(x)))\\
+\]
+\[
+       \sigma(\sigma(\sigma(0))\oplus x)=\sigma(\sigma(\sigma(x)))\\
+\]
+\[
+       \sigma(\sigma(\sigma(0)\oplus x))=\sigma(\sigma(\sigma(x)))\\
+\]
+\[
+       \sigma(\sigma(\sigma(0\oplus x)))=\sigma(\sigma(\sigma(x)))\\
+\]
+\[
+       \sigma(\sigma(\sigma(x)))=\sigma(\sigma(\sigma(x)))\\
+\]
+\\\\
+        \item{$a \otimes b = b \otimes a$}\\
+\large{Caso Base:}
+a=0
+\[
+       0 \otimes b = b \otimes 0\\
+\]
+\[
+       0 = 0\\
+\]
+\large{Caso Inductivo:}
+a=$\sigma(x)$\\
+Hipótesis Inductiva:
+$x \otimes b = b \otimes x$
+\[
+      \sigma(x) \otimes b = b \otimes \sigma(x)\\
+\]
+$b=\sigma(i)$
+\[
+     b\oplus (x \otimes b) = b \otimes \sigma(x)\\
+\]
+\[
+     \sigma(i)\oplus (x \otimes \sigma(i)) = \sigma(i) \otimes \sigma(x)\\
+\]
+\[
+     \sigma(i)\oplus (x \otimes \sigma(i)) = \sigma(x)\oplus(i \otimes\sigma(x)) \\
+\]
+\[
+     \sigma(i\oplus (x \otimes \sigma(i))) = \sigma(x\oplus(i \otimes\sigma(x))) \\
+\]
+\[
+     \sigma(i\oplus (x \otimes b)) = \sigma(x\oplus(i \otimes a)) \\
+\]
+Por Hipótesis inductiva:\\
+$x \otimes b=b\otimes x$\\
+$i \otimes a=a\otimes i$
+\[
+     \sigma(i\oplus (b \otimes x)) = \sigma(x\oplus(a \otimes i)) \\
+\]
+\[
+     \sigma(i\oplus (\sigma(i) \otimes x)) = \sigma(x\oplus(\sigma(x) \otimes i)) \\
+\]
+\[
+     \sigma(i\oplus x\oplus (i \otimes x)) = \sigma(x\oplus i \oplus (x \otimes i)) \\
+\]
+Demostrar que $i\oplus x=x\oplus i$\\
+para $i=\sigma (j)$\\
+Hipótesis inductiva: $j\oplus x=x\oplus j$\\
+$\sigma(j)\oplus x=x\oplus \sigma(j)$\\
+$\sigma(j\oplus x)=x\oplus \sigma(j)$\\
+$\sigma(x\oplus j)=x\oplus \sigma(j)$\\
+$\sigma(x)\oplus j=x\oplus \sigma(j)$\\
+Demostrar para el sucesor:\\
+Hipótesis inductiva: $\sigma(x)\oplus j=x\oplus \sigma(j)$\\
+$\sigma(\sigma(x))\oplus j=\sigma(x)\oplus \sigma(j)$\\
+$\sigma(\sigma(x)\oplus j)=\sigma(x\oplus \sigma(j))$\\
+Por Hipótesis inductiva:\\
+$\sigma(\sigma(x)\oplus j)=\sigma(\sigma(x)\oplus j)$\\
+Por lo tanto $i\oplus x=x\oplus i$
+\[
+     \sigma(x\oplus i\oplus (i \otimes x)) = \sigma(x\oplus i \oplus (x \otimes i)) \\
+\]
+Por Hipótesis inductiva:\\
+$x\otimes i=i\otimes x$
+\[
+     \sigma(x\oplus i\oplus (x \otimes i)) = \sigma(x\oplus i \oplus (x \otimes i)) \\
+\]
+k=$x\oplus i\oplus (x \otimes i)$
+\[
+     \sigma(k) = \sigma(k) \\
+\]
+\\\\
+        \item{$a \otimes (b \otimes c)=(a\otimes b)\otimes c$}\\
+\large{Caso Base:}
+a=0
+\[
+       0 \otimes (b \otimes c)=(0\otimes b)\otimes c
+\]
+\[
+       0 \otimes (b \otimes c)=0\otimes c
+\]
+\[
+       0=0 
+\]
+\large{Caso Inductivo:}
+a=$\sigma(x)$\\
+Hipótesis Inductiva:
+$x \otimes (b \otimes c)=(x\otimes b)\otimes c$
+\[
+       \sigma(x) \otimes (b \otimes c)=(\sigma(x)\otimes b)\otimes c
+\]
+\[
+       (b\otimes c)\oplus(x \otimes (b \otimes c))=(\sigma(x)\otimes b)\otimes c
+\]
+\[
+       (b\otimes c)\oplus(x \otimes (b \otimes c))= (b\oplus (x\otimes b))\otimes c
+\]
+Distribuir la multiplicación $b\oplus (x\otimes b))\otimes c$ (ver siguiente demostración $(a\oplus b)\otimes c = (a\otimes c) \oplus (b \otimes c)$):
+\[
+       (b\otimes c)\oplus(x \otimes (b \otimes c))= (b\otimes c) \oplus ((x\otimes b)\otimes c)
+\]
+Aplicar propedad conmutativa de la suma, explicada en la demostración anterior
+\[
+       (b\otimes c)\oplus[(x \otimes (b \otimes c))= ((x\otimes b)\otimes c)]\oplus (b\otimes c)
+\]
+\begin{center}Asumiendo que $[(x \otimes (b \otimes c))= ((x\otimes b)\otimes c)]$ es verdadero (Hipótesis Inductiva):\end{center}
+\[
+       (b\otimes c)= (b\otimes c)
+\]
+\\\\
+        \item{$(a\oplus b)\otimes c = (a\otimes c) \oplus (b \otimes c)$}\\
+\large{Caso Base:}
+a=0
+\[
+       (0\oplus b)\otimes c = (0\otimes c) \oplus (b \otimes c)
+\]
+\[
+       (b)\otimes c = (0) \oplus (b \otimes c)
+\]
+\[
+       b\otimes c = b \otimes c
+\]
+\large{Caso Inductivo:}
+a=$\sigma(x)$\\
+Hipótesis Inductiva:
+$(x\oplus b)\otimes c = (x\otimes c) \oplus (b \otimes c)$
+\[
+    (\sigma(x)\oplus b)\otimes c = (\sigma(x)\otimes c) \oplus (b \otimes c)   
+\]
+\[
+    \sigma(x\oplus b)\otimes c = (\sigma(x)\otimes c) \oplus (b \otimes c)   
+\]
+\[
+    c\oplus ((x\oplus b)\otimes c) = (\sigma(x)\otimes c) \oplus (b \otimes c)   
+\]
+\[
+    c\oplus ((x\oplus b)\otimes c) = (c\oplus(x\otimes c)) \oplus (b \otimes c)   
+\]
+Aplicar propedad conmutativa de la suma, explicada dos demostraciones atrás
+\[
+    c\oplus [(x\oplus b)\otimes c) = (x\otimes c)) \oplus (b \otimes c)] \oplus c
+\]
+\begin{center}Asumiendo que $[(x\oplus b)\otimes c) = (x\otimes c)) \oplus (b \otimes c)]$ es verdadero (Hipótesis Inductiva):\end{center}
+\[
+   c=c
+\]
+
+\end{itemize}
+\end{document}
